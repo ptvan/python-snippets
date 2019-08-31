@@ -72,3 +72,5 @@ corr_matrix["median_house_value"].sort_values(ascending=False)
 
 attributes = ["median_house_value","median_income","total_rooms","housing_median_age"]
 scatter_matrix(housing[attributes], figsize=(12,8))
+
+housing.to_csv("datasets/housing_clean.csv")
