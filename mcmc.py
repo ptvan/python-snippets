@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import pymc3 as pm
+from matplotlib import pyplot as plt
 
 count_data = pd.read_csv("datasets/apple_health_export/stepsData.csv", sep=",")
 count_data = count_data.drop(['creationDate'],1)
@@ -8,8 +9,9 @@ count_data['startDate'] = count_data['startDate'].str.slice(0,10)
 count_data['endDate'] = count_data['endDate'].str.slice(0,10)
 count_data = count_data.groupby(["startDate", "endDate"]).sum()
 
-
 n_count_data = len(count_data)
+
+plt.bar(np.arange(n_count_data), count_data['stepsWalked'], color="#348ABD")
 
 with pm.Model() as model:
     alpha = 1.0 / count_data['stepsWalked'].mean()
