@@ -48,4 +48,15 @@ df.createOrReplaceTempView("df")
 sparkSession.catalog.listTables()
 sparkSession.sql("SELECT * FROM df").show()
 
+# alternatively, we can take an existing Pandas DataFrame
+# and convert it to a Spark DataFrame
+
+pdf = pd.read_csv("datasets/housing/housing.csv")
+tmp_df = sparkSession.createDataFrame(pdf)
+tmp_df.createOrReplaceTempView("df")
+
+# this replaced the previous 'df' in the catalog!
+sparkSession.catalog.listTables()
+
+
 sparkSession.stop()
