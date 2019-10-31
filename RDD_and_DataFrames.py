@@ -31,9 +31,12 @@ df.groupBy('ocean_proximity').count().collect()
 df.groupby('ocean_proximity').agg({'median_house_value':'mean'}).collect()
 
 # joining
-# NOTE: joining tables do not add prefixes to the column names of the result !
+# NOTE: joining Spark DataFrames do not add prefixes to the column names of the result !
+# so will need to rename columns
 joined = df.join(df2, df2.longitude == df.longitude, `inner`)
 joined.toPandas()
 
-sparkSession.stop()
+joined.write.save("housing.parquet", format="parquet")
+joined.write.save("housing_new.csv", format="csv")
 
+sparkSession.stop()
