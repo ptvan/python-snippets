@@ -106,3 +106,6 @@ venv.bak/
 #VSCode
 launch.json
 datasets/.DS_Store
+
+#pycharm
+.idea
