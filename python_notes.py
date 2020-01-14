@@ -9,6 +9,7 @@ for x, y in zip(xs, ys):
 import re
 
 mystring = "my input string, which has 1,2,3 ,4 & lots of other stuff!"
+mystring.replace("1", "one")
 re.findall(",", mystring)
 
 # file I/O
