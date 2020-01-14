@@ -1,4 +1,9 @@
 # iterate over two lists simultaneously
+xs = [1, 3, 5, 7]
+ys = [2, 4, 6, 8]
+
+for x, y in zip(xs, ys):
+    print(x, y)
 
 # regex
 import re
