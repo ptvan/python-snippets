@@ -13,6 +13,12 @@ mystring.lstrip("-")
 mystring.replace("1", "one")
 re.findall(",", mystring)
 
+# numbers
+import decimal
+
+decimal.Decimal('2.5') + decimal.Decimal('2.6')
+round(47584, -1)
+
 # file I/O
 import os
 
