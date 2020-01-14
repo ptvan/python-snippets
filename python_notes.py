@@ -10,3 +10,8 @@ import re
 
 mystring = "my input string, which has 1,2,3 ,4 & lots of other stuff!"
 re.findall(",", mystring)
+
+# file I/O
+import os
+
+dirnames = [name for name in os.listdir('/Users/ptv/') if os.path.isdir(os.path.join('/Users/ptv', name))]
