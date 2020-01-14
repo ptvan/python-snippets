@@ -5,10 +5,11 @@ ys = [2, 4, 6, 8]
 for x, y in zip(xs, ys):
     print(x, y)
 
-# regex
+# strings
 import re
 
-mystring = "my input string, which has 1,2,3 ,4 & lots of other stuff!"
+mystring = "-my input string, which has 1,2,3 ,4 & lots of other stuff!  "
+mystring.lstrip("-")
 mystring.replace("1", "one")
 re.findall(",", mystring)
 
