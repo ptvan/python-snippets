@@ -25,3 +25,5 @@ with gzip.open("myfile.gz", 'rt') as f:
     text = f.read()
 with gzip.open("otherfile.gz", 'wt', compresslevel=5) as f:
     f.write(text)
+with gzip.open("filethatalreadyexists.gz", 'xb', compresslevel=5) as f:
+    f.write(text)
