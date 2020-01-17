@@ -5,10 +5,12 @@ for x, y in zip(xs, ys):
     print(x, y)
 
 # STRINGS
-import re
 mystring = "-my input string, which has 1,2,3 ,4 & lots of other stuff!  "
 mystring.lstrip("-")
 mystring.replace("1", "one")
+mystring.startswith("my")
+
+import re
 re.findall(",", mystring)
 
 # NUMBERS
@@ -32,18 +34,22 @@ with gzip.open("filethatalreadyexists.gz", 'xb', compresslevel=5) as f:
 # DATA STRUCTURES
 import heapq
 
+# find largest items
 nums = [i for i in range(1, 21)] + [22, 22, 23]
 print(heapq.nlargest(3, nums))
 
-hasdupes = [1, 25, 1, 80, 100, 125]
-nodupes = set(hasdupes)
-sorted = hasdupes.sort()
-
+# find most common items in a list
 from collections import Counter
 bagofwords = "it was the best of times it was the worst of times".split()
 word_counts = Counter(bagofwords)
 word_counts.most_common(3)
 
+# sorting & handling duplicates
+hasdupes = [1, 25, 1, 80, 100, 125]
+nodupes = set(hasdupes)
+sorted = hasdupes.sort()
+
+# subset a dict
 ages = {
         'Mary': 20,
         'Bob': 56,
