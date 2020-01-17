@@ -34,3 +34,7 @@ import heapq
 
 nums = [i for i in range(1, 21)] + [22, 22, 23]
 print(heapq.nlargest(3, nums))
+
+hasdupes = [1, 25, 1, 80, 100, 125]
+nodupes = set(hasdupes)
+sorted = hasdupes.sort()
