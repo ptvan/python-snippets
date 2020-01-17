@@ -38,3 +38,8 @@ print(heapq.nlargest(3, nums))
 hasdupes = [1, 25, 1, 80, 100, 125]
 nodupes = set(hasdupes)
 sorted = hasdupes.sort()
+
+from collections import Counter
+bagofwords = "it was the best of times it was the worst of times".split()
+word_counts = Counter(bagofwords)
+word_counts.most_common(3)
