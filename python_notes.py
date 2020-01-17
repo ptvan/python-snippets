@@ -28,3 +28,9 @@ with gzip.open("otherfile.gz", 'wt', compresslevel=5) as f:
 # for binary mode and check existing file
 with gzip.open("filethatalreadyexists.gz", 'xb', compresslevel=5) as f:
     f.write(text)
+
+# DATA STRUCTURES
+import heapq
+
+nums = [i for i in range(1, 21)] + [22, 22, 23]
+print(heapq.nlargest(3, nums))
