@@ -43,3 +43,11 @@ from collections import Counter
 bagofwords = "it was the best of times it was the worst of times".split()
 word_counts = Counter(bagofwords)
 word_counts.most_common(3)
+
+ages = {
+        'Mary': 20,
+        'Bob': 56,
+        'Alice': 9,
+        'John': 15
+}
+adults = {key:value for key, value in ages.items() if value > 18}
