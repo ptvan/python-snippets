@@ -13,6 +13,8 @@ mystring = "-my input string, which has 1,2,3 ,4 & lots of other stuff!  "
 mystring.lstrip("-")
 mystring.replace("1", "one")
 mystring.startswith("my")
+mystring.rjust(65, ".")
+mystring + '  ' + 'some other string'
 
 import re
 re.findall(",", mystring)
