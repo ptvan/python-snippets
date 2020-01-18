@@ -1,10 +1,14 @@
+########
 # LOOPS
+########
 xs = [1, 3, 5, 7]
 ys = [2, 4, 6, 8]
 for x, y in zip(xs, ys):
     print(x, y)
 
+#########
 # STRINGS
+#########
 mystring = "-my input string, which has 1,2,3 ,4 & lots of other stuff!  "
 mystring.lstrip("-")
 mystring.replace("1", "one")
@@ -13,12 +17,16 @@ mystring.startswith("my")
 import re
 re.findall(",", mystring)
 
+#########
 # NUMBERS
+#########
 import decimal
 decimal.Decimal('2.5') + decimal.Decimal('2.6')
 round(47584, -1)
 
+##########
 # FILE I/O
+##########
 import os
 dirnames = [name for name in os.listdir('/Users/ptv/') if os.path.isdir(os.path.join('/Users/ptv', name))]
 
@@ -31,7 +39,9 @@ with gzip.open("otherfile.gz", 'wt', compresslevel=5) as f:
 with gzip.open("filethatalreadyexists.gz", 'xb', compresslevel=5) as f:
     f.write(text)
 
+#################
 # DATA STRUCTURES
+#################
 import heapq
 
 # find largest items
@@ -57,3 +67,12 @@ ages = {
         'John': 15
 }
 adults = {key:value for key, value in ages.items() if value > 18}
+
+########
+# BASE64
+########
+
+# base64 is meant for byte data
+import base64
+mybytes = b'notastring'
+base64.b64encode(mybytes)
