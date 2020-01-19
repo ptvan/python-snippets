@@ -6,6 +6,17 @@ ys = [2, 4, 6, 8]
 for x, y in zip(xs, ys):
     print(x, y)
 
+########
+# RANDOM
+########
+import random
+
+random.random()
+random.randint(0, 5000)
+fruits = ["apple", "pear", "kiwi", "orange", "plum"]
+random.choice(fruits)
+
+
 #########
 # STRINGS
 #########
