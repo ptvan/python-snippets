@@ -19,6 +19,15 @@ mystring + '  ' + 'some other string'
 import re
 re.findall(",", mystring)
 
+########
+# DATES & TIMES
+########
+from datetime import datetime
+startstring = '2011-12-01'
+startdate = datetime.strptime(startstring, '%Y-%m-%d')
+duration = datetime.now() - startdate
+
+
 #########
 # NUMBERS
 #########
