@@ -11,11 +11,14 @@ for x, y in zip(xs, ys):
 ########
 import random
 
+random.seed(b'bytedata')
 random.random()
 random.randint(0, 5000)
 fruits = ["apple", "pear", "kiwi", "orange", "plum"]
 random.choice(fruits)
-
+numbers = [1, 2, 3, 4, 5, 6, 7]
+random.shuffle(numbers)
+random.sample(numbers, 3)
 
 #########
 # STRINGS
