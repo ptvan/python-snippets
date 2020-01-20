@@ -45,6 +45,9 @@ duration = datetime.now() - startdate
 import decimal
 decimal.Decimal('2.5') + decimal.Decimal('2.6')
 round(47584, -1)
+longnumber = 57486734658493.45
+format(longnumber, ',')
+format(longnumber, 'e')
 
 ##########
 # FILE I/O
