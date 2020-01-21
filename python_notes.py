@@ -50,11 +50,14 @@ round(47584, -1)
 longfloat = 57486734658493.45
 format(longfloat, ',')
 format(longfloat, 'e')
-longint = 20585777365759353646463
+# ints are signed, so conversions will return signed
+longint = -20585777365759353646463
 bin(longint)
 oct(longint)
 # format() omits 0b/0o/0x prefixes
 format(longint, 'b')
+# to produce unsigned value, add in maximum value, eg. 128-bit
+format(2**128 + longint, 'b')
 
 ##########
 # FILE I/O
