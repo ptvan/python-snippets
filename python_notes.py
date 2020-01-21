@@ -10,7 +10,6 @@ for x, y in zip(xs, ys):
 # RANDOM
 ########
 import random
-
 random.seed(b'bytedata')
 random.random()
 random.randint(0, 5000)
@@ -48,9 +47,14 @@ duration = datetime.now() - startdate
 import decimal
 decimal.Decimal('2.5') + decimal.Decimal('2.6')
 round(47584, -1)
-longnumber = 57486734658493.45
-format(longnumber, ',')
-format(longnumber, 'e')
+longfloat = 57486734658493.45
+format(longfloat, ',')
+format(longfloat, 'e')
+longint = 20585777365759353646463
+bin(longint)
+oct(longint)
+# format() omits 0b/0o/0x prefixes
+format(longint, 'b')
 
 ##########
 # FILE I/O
@@ -99,7 +103,6 @@ adults = {key:value for key, value in ages.items() if value > 18}
 ########
 # BASE64
 ########
-
 # base64 is meant for byte data
 import base64
 mybytes = b'notastring'
