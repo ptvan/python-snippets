@@ -1,3 +1,7 @@
+###########################
+# RDDs and Spark DataFrames
+###########################
+
 import pandas as pd
 import pyspark
 from pyspark.sql import SparkSession
@@ -33,7 +37,7 @@ df.groupby('ocean_proximity').agg({'median_house_value':'mean'}).collect()
 # joining
 # NOTE: joining Spark DataFrames do not add prefixes to the column names of the result !
 # so will need to rename columns
-joined = df.join(df2, df2.longitude == df.longitude, `inner`)
+joined = df.join(df2, df2.longitude == df.longitude, "inner")
 
 # this needs to be small enough to fit into driver's memory...
 joined.toPandas()
@@ -57,6 +61,5 @@ tmp_df.createOrReplaceTempView("df")
 
 # this replaced the previous 'df' in the catalog!
 sparkSession.catalog.listTables()
-
 
 sparkSession.stop()
