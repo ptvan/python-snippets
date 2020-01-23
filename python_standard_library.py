@@ -29,6 +29,10 @@ mystring.replace("1", "one")
 mystring.startswith("my")
 mystring.rjust(65, ".")
 mystring + '  ' + 'some other string'
+actuallyint = "47683"
+int(actuallyint)
+actuallyfloat = "4583.014"
+float(actuallyfloat)
 
 import re
 re.findall(",", mystring)
@@ -102,7 +106,7 @@ ages = {
         'Alice': 9,
         'John': 15
 }
-adults = {key:value for key, value in ages.items() if value > 18}
+adults = {key: value for key, value in ages.items() if value > 18}
 
 ########
 # BASE64
