@@ -1,4 +1,6 @@
 import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 steps = pd.read_csv("~/working/datasets/iphone_health/stepsData.csv")
 list(steps)
@@ -17,4 +19,4 @@ cycling['creationDate'] = cycling['creationDate'].str.slice(0, 10)
 cycling = cycling.groupby('creationDate', as_index=False).sum()
 
 activity = steps.merge(cycling, 'outer', left_on='creationDate', right_on='creationDate').fillna(0)
-
+sns.distplot(activity['stepsWalked'])
