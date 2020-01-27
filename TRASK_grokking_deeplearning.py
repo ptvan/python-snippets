@@ -15,11 +15,22 @@ for iteration in range(4):
 
 ## BAREBONES NEULRALNET
 
+def nonlin(x, derive=False):
+    if (derive==True):
+        return x*(1-x)
+    return 1/(1 + np.exp(-x))
+
+
+X = np.array([[0,0,1],
+              [0,1,1],
+              [1,0,1],
+              [1,1,1]])
+
 # output data
 y = np.array([[0, 0, 1, 1]]).T
 
 # initialize random weights
-syn0 = 2*np.random.random((3, 1)) - 1
+syn0 = 2 * np.random.random((3, 1)) - 1
 
 for j in range(60000):
     # forward propagation:
