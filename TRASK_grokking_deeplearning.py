@@ -47,7 +47,8 @@ print(l1)
 
 
 ## M.N.I.S.T. 
-import sys, numpy as np
+import sys
+import numpy as np
 from keras.datasets import mnist
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
