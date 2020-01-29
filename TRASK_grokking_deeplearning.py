@@ -187,7 +187,7 @@ for j in range(iterations):
         layer_1 = tanh(np.dot(layer_0, weights_0_1))
         dropout_mask = np.random.randint(2, size = layer_1.shape)
         layer_1 *= dropout_mask * 2
-        layer_2 = softmax(np.dot(layer_1,weight_1_2))
+        layer_2 = softmax(np.dot(layer_1,weights_1_2))
 
         for k in range(batch_size):
             correct_cnt += int(np.argmax(layer_2[k:k+1]) == np.argmax(labels[batch_start+k:batch_start+k+1]))
