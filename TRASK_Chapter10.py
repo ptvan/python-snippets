@@ -67,10 +67,10 @@ for j in range(iterations):
         
         expanded_input = np.concatenate(sects, axis=1)
         es = expanded_input.shape
-        flattened_input = expanded_input.reshape(es[0]*es[1],-1)
+        flattened_input = expanded_input.reshape(es[0] * es[1],-1)
         kernel_output = flattened_input.dot(kernels)
         layer_1 = tanh(kernel_output.reshape(es[0],-1))
-        dropout_mask = np.random.randit(2, size=layer_1.shape)
+        dropout_mask = np.random.randint(2, size=layer_1.shape)
         layer_1 *= dropout_mask * 2
         layer_2 = softmax(np.dot(layer_1, weights_1_2))
 
@@ -84,7 +84,7 @@ for j in range(iterations):
         weights_1_2 += alpha * layer_1.T.dot(layer_2_delta)
         l1d_reshape = layer_1_delta.reshape(kernel_output.shape)
         k_update = flattened_input.T.dot(l1d_reshape)
-        kernel -= alpha * k_update
+        kernels -= alpha * k_update
 
     test_correct_cnt = 0
     for i in range(len(test_images)):
