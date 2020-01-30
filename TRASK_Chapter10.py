@@ -77,7 +77,7 @@ for j in range(iterations):
         for k in range(batch_size):
             labelset = labels[batch_start+k:batch_start+k+1]
             _inc = int(np.argmax(layer_2[k:k+1]) == np.argmax(labelset))
-            correct_cnt +- _inc
+            correct_cnt += _inc
         layer_2_delta = (labels[batch_start:batch_end] - layer_2) / (batch_size * layer_2.shape[0])
         layer_1_delta = layer_2_delta.dot(weights_1_2.T)* tanh2deriv(layer_1)
         layer_1_delta *= dropout_mask
