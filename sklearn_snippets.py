@@ -7,9 +7,13 @@ import itertools
 from scipy import linalg
 from sklearn.neighbors import KernelDensity
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import AdaBoostClassifier
 from sklearn.model_selection import train_test_split
+from sklearn import tree
 from sklearn import metrics
 from sklearn import mixture
+
 
 steps = pd.read_csv("~/working/datasets/iphone_health/stepsData.csv")
 steps = steps.drop(['startDate','endDate'], axis=1)
@@ -32,6 +36,14 @@ y_pred = regressor.predict(X_test)
 print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))
 print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))
 print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+
+regressor = regressor.estimators_[1]
+export_graphviz(regressor, out_file='tree.dot', 
+                rounded = True, proportion = False, 
+                precision = 2, filled = True)
+
+# AdaBoost
+
 
 # Gaussian Mixture Model
 # NOTE: the data is rather crappy, so errors are expected below.
