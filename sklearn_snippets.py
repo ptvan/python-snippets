@@ -38,9 +38,12 @@ print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))
 print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
 
 regressor = regressor.estimators_[1]
+# output Graphviz .dot file, which needs 
+# `dot -Tpng tree.dot -o tree.png '-Gdpi=600'`
 export_graphviz(regressor, out_file='tree.dot', 
                 rounded = True, proportion = False, 
                 precision = 2, filled = True)
+
 
 # AdaBoost
 
