@@ -10,7 +10,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.model_selection import train_test_split
-from sklearn import tree
+from sklearn.tree import export_graphviz
 from sklearn import metrics
 from sklearn import mixture
 
@@ -39,7 +39,7 @@ print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_p
 
 regressor = regressor.estimators_[1]
 # output Graphviz .dot file, which needs 
-# `dot -Tpng tree.dot -o tree.png '-Gdpi=600'`
+# `dot -Tpng tree.dot -o tree.png '-Gdpi=100'`
 export_graphviz(regressor, out_file='tree.dot', 
                 rounded = True, proportion = False, 
                 precision = 2, filled = True)
