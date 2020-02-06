@@ -13,6 +13,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import export_graphviz
 from sklearn import metrics
 from sklearn import mixture
+from sklearn.datasets import make_classification
+from sklearn.ensemble import AdaBoostClassifier
 
 
 steps = pd.read_csv("~/working/datasets/iphone_health/stepsData.csv")
@@ -46,7 +48,14 @@ export_graphviz(regressor, out_file='tree.dot',
 
 
 # AdaBoost
-
+X, y = make_classification(n_samples=1000, n_features=4,
+                           n_informative=2, n_redundant=0,
+                          random_state=0, shuffle=False)
+ada = AdaBoostClassifier(n_estimators=100, random_state=0)
+ada.fit(X, y)
+ada.predict([[0, 0, 0, 0]])
+# mean accuracy
+ada.score(X, y)
 
 # Gaussian Mixture Model
 # NOTE: the data is rather crappy, so errors are expected below.
