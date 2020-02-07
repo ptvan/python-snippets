@@ -1,5 +1,6 @@
 import pandas as pd
 import seaborn as sns
+import numpy as np
 import matplotlib.pyplot as plt
 
 steps = pd.read_csv("~/working/datasets/iphone_health/stepsData.csv")
@@ -19,4 +20,25 @@ cycling['creationDate'] = cycling['creationDate'].str.slice(0, 10)
 cycling = cycling.groupby('creationDate', as_index=False).sum()
 
 activity = steps.merge(cycling, 'outer', left_on='creationDate', right_on='creationDate').fillna(0)
+activity.rename(columns={"creationDate" : "date"})
+
+%matplotlib inline
+
+# plot with 2 X-axes
+t = np.arange(activity.shape[0])
+fig, ax1 = plt.subplots()
+
+ax1.set_xlabel('day')
+ax1.set_ylabel('stepsWalked', color="red")
+ax1.plot(t, activity['stepsWalked'], color="red")
+ax1.tick_params(axis='y', labelcolor="red")
+
+ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+
+ax2.set_ylabel('milesCycled', color="blue")  # we already handled the x-label with ax1
+ax2.plot(t, activity['milesCycled'], color="blue")
+ax2.tick_params(axis='y', labelcolor="blue")
+
+fig.tight_layout()
+
 sns.distplot(activity['stepsWalked'])
