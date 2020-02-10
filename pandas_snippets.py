@@ -24,7 +24,7 @@ activity.rename(columns={"creationDate" : "date"})
 
 %matplotlib inline
 
-# plot with 2 X-axes
+# barplot with 2 X-axes
 t = np.arange(activity.shape[0])
 fig, ax1 = plt.subplots()
 
@@ -40,5 +40,13 @@ ax2.plot(t, activity['milesCycled'], color="blue")
 ax2.tick_params(axis='y', labelcolor="blue")
 
 fig.tight_layout()
+
+# scatterplot 
+fig, ax = plt.subplots()
+ax.scatter(activity['stepsWalked'], activity['kcalBurned'])
+ax.grid(True)
+ax.set_xlabel('stepsWalked', color="black")
+ax.set_ylabel('kcalBurned', color="black")
+
 
 sns.distplot(activity['stepsWalked'])
