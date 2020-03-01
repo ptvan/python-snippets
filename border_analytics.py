@@ -52,6 +52,8 @@ def flooredMean(input):
 
 fileOut = open(outputFile, "w")
 
+
+# aggregation 
 for date in uniqueDates:
     for border in uniqueBorders:
         for measure in uniqueMeasures:
