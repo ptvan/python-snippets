@@ -2,7 +2,7 @@ from keras import layers
 from keras import models
 from keras.datasets import mnist
 from keras.utils import to_categorical
-from models.AE import Autoencoder
+from AE import Autoencoder
 
 ## MNIST
 
