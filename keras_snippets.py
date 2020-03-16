@@ -2,7 +2,6 @@ from keras import layers
 from keras import models
 from keras.datasets import mnist
 from keras.utils import to_categorical
-from AE import Autoencoder
 
 ## MNIST
 
@@ -29,12 +28,30 @@ print('test_acc:', test_acc)
 
 ## variational autoencoders
 
-AE = Autoencoder(
-    input_dim = (28,28,1)
-    , encoder_conv_filters = [32,64,64, 64]
-    , encoder_conv_kernel_size = [3,3,3,3]
-    , encoder_conv_strides = [1,2,2,1]
-    , decoder_conv_t_filters = [64,64,32,1]
-    , decoder_conv_t_kernel_size = [3,3,3,3]
-    , decoder_conv_t_strides = [1,2,2,1]
-    , z_dim = 2)
+inputs = Input(shape=input_shape, name='encoder_input')
+x = Dense(intermediate_dim, activation='relu')(inputs)
+z_mean = Dense(latent_dim, name='z_mean')(x)
+z_log_var = Dense(latent_dim, name='z_log_var')(x)
+
+# use reparameterization trick to push the sampling out as input
+# note that "output_shape" isn't necessary with the TensorFlow backend
+z = Lambda(sampling, output_shape=(latent_dim,), name='z')([z_mean, z_log_var])
+
+# instantiate encoder model
+encoder = Model(inputs, [z_mean, z_log_var, z], name='encoder')
+encoder.summary()
+plot_model(encoder, to_file='vae_mlp_encoder.png', show_shapes=True)
+
+# build decoder model
+latent_inputs = Input(shape=(latent_dim,), name='z_sampling')
+x = Dense(intermediate_dim, activation='relu')(latent_inputs)
+outputs = Dense(original_dim, activation='sigmoid')(x)
+
+# instantiate decoder model
+decoder = Model(latent_inputs, outputs, name='decoder')
+decoder.summary()
+plot_model(decoder, to_file='vae_mlp_decoder.png', show_shapes=True)
+
+# instantiate VAE model
+outputs = decoder(encoder(inputs)[2])
+vae = Model(inputs, outputs, name='vae_mlp')
