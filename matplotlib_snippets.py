@@ -1,5 +1,4 @@
 import pandas as pd
-import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -47,6 +46,3 @@ ax.scatter(activity['stepsWalked'], activity['kcalBurned'])
 ax.grid(True)
 ax.set_xlabel('stepsWalked', color="black")
 ax.set_ylabel('kcalBurned', color="black")
-
-
-sns.distplot(activity['stepsWalked'])
