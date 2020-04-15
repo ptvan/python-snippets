@@ -21,4 +21,8 @@ cycling = cycling.groupby('creationDate', as_index=False).sum()
 activity = steps.merge(cycling, 'outer', left_on='creationDate', right_on='creationDate').fillna(0)
 activity.rename(columns={"creationDate" : "date"})
 
+activity.head()
 sns.distplot(activity['stepsWalked'])
+
+sns.scatterplot(x="stepsWalked", y="milesCycled", data=activity)
+
