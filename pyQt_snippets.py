@@ -15,10 +15,23 @@ class filerenamer(QWidget):
         self.inputLbl = QLabel("Input files")
         self.browseBtn = QPushButton("select")
         self.browseBtn.clicked.connect(self.getfiles)
+        self.prefixChkbox = QCheckBox("prefix")
+        self.suffixChkbox = QCheckBox("suffix")
+        self.replaceChkbox = QCheckBox("replace")
+        self.replaceEditold = QLineEdit("oldtext")
+        self.replaceEditnew = QLineEdit("newtext")
+        
+        self.replaceEditold.setFixedWidth(100)
+        self.replaceEditnew.setFixedWidth(100)
 
+             
         layout.addWidget(self.inputLbl)
-    
         layout.addWidget(self.browseBtn)
+        layout.addWidget(self.prefixChkbox)
+        layout.addWidget(self.suffixChkbox) 
+        layout.addWidget(self.replaceChkbox)
+        layout.addWidget(self.replaceEditold)
+        layout.addWidget(self.replaceEditnew) 
 
         self.contents = QTableWidget()
         layout.addWidget(self.contents)
