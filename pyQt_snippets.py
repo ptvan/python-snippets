@@ -1,8 +1,9 @@
 import sys
+import ntpath
 from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
         QDial, QDialog, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QLineEdit,
         QProgressBar, QPushButton, QRadioButton, QScrollBar, QSizePolicy,
-        QSlider, QSpinBox, QStyleFactory, QTableWidget, QTabWidget, QTextEdit,
+        QSlider, QSpinBox, QStyleFactory, QTableWidget, QTableWidgetItem, QTabWidget, QTextEdit,
         QVBoxLayout, QWidget, QFileDialog)
 
 
@@ -11,24 +12,28 @@ class filerenamer(QWidget):
         super(filerenamer, self).__init__(parent)
 		
         layout = QVBoxLayout()
-        self.le = QLabel("Input files")
-        self.btn = QPushButton("select")
-        self.btn.clicked.connect(self.getfiles)
+        self.inputLbl = QLabel("Input files")
+        self.browseBtn = QPushButton("select")
+        self.browseBtn.clicked.connect(self.getfiles)
 
-        layout.addWidget(self.le)
+        layout.addWidget(self.inputLbl)
     
-        layout.addWidget(self.btn)
+        layout.addWidget(self.browseBtn)
 
         self.contents = QTableWidget()
         layout.addWidget(self.contents)
         self.setLayout(layout)
         self.setWindowTitle("File Renamer")
-        self.contents.setFixedWidth(480)
+        self.contents.setFixedWidth(600)
         self.contents.setColumnCount(2)
         tableHeader = ["original filename","new filename"]
         self.contents.setHorizontalHeaderLabels(tableHeader)
-        self.contents.setColumnWidth(0,239)
-        self.contents.setColumnWidth(1,239)
+        self.contents.setColumnWidth(0,299)
+        self.contents.setColumnWidth(1,299)
+
+        self.renameBtn = QPushButton("rename")
+
+        layout.addWidget(self.renameBtn)
 
     def getfiles(self):
         options = QFileDialog.Options()
@@ -36,12 +41,15 @@ class filerenamer(QWidget):
         files, _ = QFileDialog.getOpenFileNames(self,"Select files to rename", "","All Files (*)", options=options)
         if files:
             self.contents.setRowCount(len(files))
+            for i in range(len(files)):
+                item = QTableWidgetItem(ntpath.basename(files[i]))
+                self.contents.setItem(i,0, item)
             print(files)
 
 def main():
     app = QApplication(sys.argv)
     ex = filerenamer()
-    ex.setFixedSize(500,500)
+    ex.setFixedSize(620,500)
     ex.show()
     sys.exit(app.exec_())
 	
