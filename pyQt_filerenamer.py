@@ -1,4 +1,5 @@
 import sys
+import os
 import ntpath
 from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
         QDial, QDialog, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QLineEdit,
@@ -15,16 +16,15 @@ class filerenamer(QWidget):
         self.inputLbl = QLabel("Input files")
         self.browseBtn = QPushButton("select")
         self.browseBtn.clicked.connect(self.getfiles)
+
         self.prefixChkbox = QCheckBox("prefix")
         self.suffixChkbox = QCheckBox("suffix")
         self.replaceChkbox = QCheckBox("replace")
         self.replaceEditold = QLineEdit("oldtext")
-        self.replaceEditnew = QLineEdit("newtext")
-        
         self.replaceEditold.setFixedWidth(100)
+        self.replaceEditnew = QLineEdit("newtext")
         self.replaceEditnew.setFixedWidth(100)
 
-             
         layout.addWidget(self.inputLbl)
         layout.addWidget(self.browseBtn)
         layout.addWidget(self.prefixChkbox)
@@ -45,6 +45,7 @@ class filerenamer(QWidget):
         self.contents.setColumnWidth(1,299)
 
         self.renameBtn = QPushButton("rename")
+        self.renameBtn.clicked.connect(self.renamefiles)
 
         layout.addWidget(self.renameBtn)
 
@@ -58,6 +59,12 @@ class filerenamer(QWidget):
                 item = QTableWidgetItem(ntpath.basename(files[i]))
                 self.contents.setItem(i,0, item)
             print(files)
+    
+    def processnames(self):
+        return(files)
+
+    def renamefiles(self):
+        os.system()
 
 def main():
     app = QApplication(sys.argv)
