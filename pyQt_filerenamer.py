@@ -18,17 +18,24 @@ class filerenamer(QWidget):
         self.browseBtn.clicked.connect(self.getfiles)
 
         self.prefixChkbox = QCheckBox("prefix")
+        self.prefixChkbox.stateChanged.connect(self.processnames)
         self.prefixEdit = QLineEdit("")
         self.prefixEdit.setFixedWidth(50)
+
         self.suffixChkbox = QCheckBox("suffix")
+        self.suffixChkbox.stateChanged.connect(self.processnames)
         self.suffixEdit = QLineEdit("")
         self.suffixEdit.setFixedWidth(50)
+
         self.numberingChkbox = QCheckBox("numbering")
+        self.numberingChkbox.stateChanged.connect(self.processnames)
         self.numberingStartEdit = QLineEdit("000")
         self.numberingStartEdit.setFixedWidth(30)
         self.numberingStepEdit = QLineEdit("1")
-        self.numberingStepEdit.setFixedWidth(20) 
+        self.numberingStepEdit.setFixedWidth(20)
+
         self.replaceChkbox = QCheckBox("replace")
+        self.replaceChkbox.stateChanged.connect(self.processnames)        
         self.replaceoldEdit = QLineEdit("oldtext")
         self.replaceoldEdit.setFixedWidth(190)
         self.replacenewEdit = QLineEdit("newtext")
@@ -80,10 +87,20 @@ class filerenamer(QWidget):
         reply.setText("Rename files?")
         reply.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
         retval = reply.exec_()
-        print("value of pressed message box button:", retval)
+        # if retval == 65536:
+        #     print("user cancelled")
+        if retval == 16384:
+            self.renamefiles()
 
     def processnames(self):
-        return(files)
+        if self.prefixChkbox.isChecked(): 
+            print('Prefix box is checked!')
+        if self.suffixChkbox.isChecked():
+            print('Suffix box is checked!')
+        if self.numberingChkbox.isChecked():
+            print('Numbering box is checked!')
+        if self.replaceChkbox.isChecked():
+            print('Replace box is checked!')
 
     def renamefiles(self):
         os.system()
