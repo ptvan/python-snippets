@@ -30,7 +30,7 @@ class filerenamer(QWidget):
 
         self.numberingChkbox = QCheckBox("numbering")
         self.numberingChkbox.stateChanged.connect(self.processnames)
-        self.numberingStartEdit = QLineEdit("000")
+        self.numberingStartEdit = QLineEdit("0")
         self.numberingStartEdit.setFixedWidth(30)
         self.numberingStepEdit = QLineEdit("1")
         self.numberingStepEdit.setFixedWidth(20)
@@ -84,9 +84,8 @@ class filerenamer(QWidget):
             for i in range(len(files)):
                 short = os.path.basename(files[i])
                 self.contents.setItem(i,0, QTableWidgetItem(short))
-
+            print(files)
             self.processnames()
-            # print(files)
             
 
     def confirm(self):
@@ -112,6 +111,8 @@ class filerenamer(QWidget):
 
         if self.numberingChkbox.isChecked():
             print('Numbering box is checked!')
+            self.newNames = [os.path.splitext(os.path.basename(self.newNames[i]))[0] + str(i + int(self.numberingStartEdit.text())) * int(self.numberingStepEdit.text()) + os.path.splitext(os.path.basename(self.newNames[i]))[1] for (i, j) in enumerate(self.originalNames)]
+
         if self.replaceChkbox.isChecked():
             print('Replace box is checked!')
         
