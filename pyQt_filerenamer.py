@@ -102,15 +102,12 @@ class filerenamer(QWidget):
     def processnames(self):
         self.newNames = self.originalNames
         if self.prefixChkbox.isChecked(): 
-            print('Prefix box is checked!')
             self.newNames = [self.prefixEdit.text() + os.path.basename(x) for x in self.newNames]
 
         if self.suffixChkbox.isChecked():
-            print('Suffix box is checked!')
-            self.newNames = [os.path.splitext(self.newNames[0])[0] + self.suffixEdit.text() + os.path.splitext(self.newNames[0])[1] for x in self.originalNames ]
+            self.newNames = [os.path.splitext(x)[0] + self.suffixEdit.text() + os.path.splitext(x)[1] for x in self.newNames ]
 
         if self.numberingChkbox.isChecked():
-            print('Numbering box is checked!')
             self.newNames = [os.path.splitext(os.path.basename(self.newNames[i]))[0] + str(i + int(self.numberingStartEdit.text())) * int(self.numberingStepEdit.text()) + os.path.splitext(os.path.basename(self.newNames[i]))[1] for (i, j) in enumerate(self.originalNames)]
 
         if self.replaceChkbox.isChecked():
