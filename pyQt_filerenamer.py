@@ -80,12 +80,12 @@ class filerenamer(QWidget):
         if files:
             self.contents.setRowCount(len(files))
             self.originalNames = files
+            self.newNames = files
             for i in range(len(files)):
                 short = os.path.basename(files[i])
                 self.contents.setItem(i,0, QTableWidgetItem(short))
 
             self.processnames()
-                # originalNames[i] = os.path.basename(files[i])
             # print(files)
             
 
@@ -101,13 +101,14 @@ class filerenamer(QWidget):
             self.renamefiles()
 
     def processnames(self):
+        self.newNames = self.originalNames
         if self.prefixChkbox.isChecked(): 
             print('Prefix box is checked!')
-            self.newNames = [self.prefixEdit.text() + os.path.basename(x) for x in self.originalNames]
+            self.newNames = [self.prefixEdit.text() + os.path.basename(x) for x in self.newNames]
 
         if self.suffixChkbox.isChecked():
             print('Suffix box is checked!')
-            self.newNames = [os.path.splitext(self.originalNames[0])[0] + self.suffixEdit.text() + os.path.splitext(self.originalNames[0])[1] for x in self.originalNames ]
+            self.newNames = [os.path.splitext(self.newNames[0])[0] + self.suffixEdit.text() + os.path.splitext(self.newNames[0])[1] for x in self.originalNames ]
 
         if self.numberingChkbox.isChecked():
             print('Numbering box is checked!')
