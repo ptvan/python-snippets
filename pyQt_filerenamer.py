@@ -89,15 +89,16 @@ class filerenamer(QWidget):
             
 
     def confirm(self):
-        reply = QMessageBox()
-        reply.setWindowTitle("Confirm file rename")
-        reply.setText("Rename files?")
-        reply.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
-        retval = reply.exec_()
-        # if retval == 65536:
-        #     print("user cancelled")
-        if retval == 16384:
-            self.renamefiles()
+        if self.contents.rowCount() > 0:
+            reply = QMessageBox()
+            reply.setWindowTitle("Confirm file rename")
+            reply.setText("Rename files?")
+            reply.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
+            retval = reply.exec_()
+            # if retval == 65536:
+            #     print("user cancelled")
+            if retval == 16384:
+                self.renamefiles()
 
     def processnames(self):
         self.newNames = self.originalNames
