@@ -1,5 +1,7 @@
 import sys
 import os
+import re
+
 from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
         QDial, QDialog, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QLineEdit,
         QProgressBar, QPushButton, QRadioButton, QScrollBar, QSizePolicy,
@@ -112,14 +114,17 @@ class filerenamer(QWidget):
             self.newNames = [os.path.splitext(os.path.basename(self.newNames[i]))[0] + str(i + int(self.numberingStartEdit.text())) * int(self.numberingStepEdit.text()) + os.path.splitext(os.path.basename(self.newNames[i]))[1] for (i, j) in enumerate(self.originalNames)]
 
         if self.replaceChkbox.isChecked():
-            print('Replace box is checked!')
+            self.newNames = [os.path.basename(x).replace(self.replaceoldEdit, self.replacenewEdit) for in self.originalNames]
+            # print('Replace box is checked!')
         
         for i in range(len(self.newNames)):
                 short = os.path.basename(self.newNames[i])
                 self.contents.setItem(i,1, QTableWidgetItem(short))
 
     def renamefiles(self):
-        os.system()
+        for i in range(len(self.newNames)):
+            print('renaming', self.originalNames[i], "to", self.newNames[i])
+            os.system('mv')
 
 def main():
     app = QApplication(sys.argv)
