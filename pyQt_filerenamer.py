@@ -114,8 +114,8 @@ class filerenamer(QWidget):
             self.newNames = [os.path.splitext(os.path.basename(self.newNames[i]))[0] + str(i + int(self.numberingStartEdit.text())) * int(self.numberingStepEdit.text()) + os.path.splitext(os.path.basename(self.newNames[i]))[1] for (i, j) in enumerate(self.originalNames)]
 
         if self.replaceChkbox.isChecked():
-            self.newNames = [os.path.basename(x).replace(self.replaceoldEdit, self.replacenewEdit) for in self.originalNames]
-            # print('Replace box is checked!')
+            self.newNames = [os.path.basename(x).replace(self.replaceoldEdit.text(), self.replacenewEdit.text()) for x in self.originalNames]
+
         
         for i in range(len(self.newNames)):
                 short = os.path.basename(self.newNames[i])
