@@ -94,7 +94,7 @@ class filerenamer(QWidget):
         if self.contents.rowCount() > 0:
             reply = QMessageBox()
             reply.setWindowTitle("Confirm file rename")
-            reply.setText("Rename files?")
+            reply.setText("Rename " + str(self.contents.rowCount()) + " files ?")
             reply.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
             retval = reply.exec_()
             # if retval == 65536:
@@ -116,10 +116,9 @@ class filerenamer(QWidget):
         if self.replaceChkbox.isChecked():
             self.newNames = [os.path.basename(x).replace(self.replaceoldEdit.text(), self.replacenewEdit.text()) for x in self.originalNames]
 
-        
         for i in range(len(self.newNames)):
-                short = os.path.basename(self.newNames[i])
-                self.contents.setItem(i,1, QTableWidgetItem(short))
+            short = os.path.basename(self.newNames[i])
+            self.contents.setItem(i,1, QTableWidgetItem(short))
 
     def renamefiles(self):
         for i in range(len(self.newNames)):
