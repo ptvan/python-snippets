@@ -40,11 +40,13 @@ class filerenamer(QWidget):
         self.replaceChkbox = QCheckBox("replace")
         self.replaceChkbox.stateChanged.connect(self.processnames)        
         self.replaceoldEdit = QLineEdit("oldtext")
+        self.replaceoldEdit.textEdited.connect(self.processnames)
         self.replaceoldEdit.setFixedWidth(190)
         self.replacenewEdit = QLineEdit("newtext")
         self.replacenewEdit.setFixedWidth(190)
+        self.replacenewEdit.textEdited.connect(self.processnames)
 
-        
+
         layout.addWidget(self.browseBtn, 0, 0, 1, 3)
         layout.addWidget(self.prefixChkbox, 1, 0, 1, 1)
         layout.addWidget(self.prefixEdit, 1, 1, 1, 1)
