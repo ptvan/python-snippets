@@ -88,7 +88,7 @@ class filerenamer(QWidget):
             for i in range(len(files)):
                 short = os.path.basename(files[i])
                 self.contents.setItem(i,0, QTableWidgetItem(short))
-            print(files)
+            # print(files)
             self.processnames()
             
 
@@ -106,6 +106,7 @@ class filerenamer(QWidget):
 
     def processnames(self):
         self.newNames = self.originalNames
+        self.dirName = os.path.dirname(self.originalNames[0])
         if self.prefixChkbox.isChecked(): 
             self.newNames = [self.prefixEdit.text() + os.path.basename(x) for x in self.newNames]
 
@@ -124,8 +125,9 @@ class filerenamer(QWidget):
 
     def renamefiles(self):
         for i in range(len(self.newNames)):
-            print('renaming', self.originalNames[i], "to", self.newNames[i])
-            os.system('mv')
+            cmd = 'mv ' + self.originalNames[i] + " " + self.dirName + "/" + self.newNames[i]
+            # print(cmd)
+            os.system(cmd)
 
 def main():
     app = QApplication(sys.argv)
