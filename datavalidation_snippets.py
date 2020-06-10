@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import List, Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 class User(BaseModel):
     id: int
@@ -22,3 +22,8 @@ print(repr(user.signup_ts))
 print(user.friends)
 
 print(user.dict())
+
+try:
+    User(signup_ts='broken', friends=[1, 2, 'not number'])
+except ValidationError as e:
+    print(e.json())
