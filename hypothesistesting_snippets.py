@@ -1,4 +1,4 @@
-from scipy.stats import normaltest
+from scipy.stats import normaltest, anderson
 import random
 
 dat = [random.randrange(1,50,1) for i in range(50)]
