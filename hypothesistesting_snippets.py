@@ -8,5 +8,5 @@ stat, p = normaltest(dat)
 print('stat=%.3f, p=%.3f' % (stat, p)) 
 
 # Anderson-Darling test for normality
-result = anderson(data)
+result = anderson(dat)
 print('stat=%.3f' % (result.statistic))
