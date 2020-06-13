@@ -1,4 +1,4 @@
-from scipy.stats import normaltest, anderson, chi2_contigency
+from scipy.stats import normaltest, anderson, chi2_contingency
 import random
 
 dat = [random.randrange(1,50,1) for i in range(50)]
