@@ -1,7 +1,9 @@
-from scipy.stats import normaltest, anderson, chi2_contingency
+from scipy.stats import normaltest, anderson, chi2_contingency, ttest_ind
 import random
 
-dat = [random.randrange(1,50,1) for i in range(50)]
+dat = [random.randrange(1,1000,1) for i in range(100)]
+dat2 = [random.randrange(1,1000,1) for i in range(100)]
+
 
 # D'Agostino's test for normality
 stat, p = normaltest(dat)
@@ -14,3 +16,6 @@ print('stat=%.3f' % (result.statistic))
 # Chi-Squared test
 table = [[10, 20, 30],[6,  9,  17]]
 stat, p, dof, expected = chi2_contingency(table)
+
+# Student's t-test
+stat, p = ttest_ind(dat, dat2)
