@@ -1,4 +1,4 @@
-from scipy.stats import normaltest, anderson, chi2_contingency, ttest_ind
+from scipy.stats import normaltest, anderson, chi2_contingency, ttest_ind, ttest_rel
 import random
 
 dat = [random.randrange(1,1000,1) for i in range(100)]
@@ -17,5 +17,8 @@ print('stat=%.3f' % (result.statistic))
 table = [[10, 20, 30],[6,  9,  17]]
 stat, p, dof, expected = chi2_contingency(table)
 
-# Student's t-test
+# Student's t-test, independent samples
 stat, p = ttest_ind(dat, dat2)
+
+# Student's t-test, paired samples
+stat, p = ttest_rel(dat, dat2)
