@@ -22,3 +22,6 @@ stat, p = ttest_ind(dat, dat2)
 
 # Student's t-test, paired samples
 stat, p = ttest_rel(dat, dat2)
+
+# Wilcoxon signed-rank test
+stat, p = wilcoxon(dat, dat2)
