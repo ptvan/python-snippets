@@ -1,4 +1,4 @@
-from scipy.stats import normaltest, anderson, chi2_contingency, ttest_ind, ttest_rel
+from scipy.stats import normaltest, anderson, chi2_contingency, ttest_ind, ttest_rel, wilcoxon
 import random
 
 dat = [random.randrange(1,1000,1) for i in range(100)]
