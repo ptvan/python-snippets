@@ -27,4 +27,4 @@ stat, p = ttest_rel(dat, dat2)
 stat, p = wilcoxon(dat, dat2)
 
 # Kruskal-Wallis test
-stat, p = kruskal(data1, data2)
+stat, p = kruskal(dat, dat2)
