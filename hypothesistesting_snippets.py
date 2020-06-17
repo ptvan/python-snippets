@@ -1,4 +1,4 @@
-from scipy.stats import normaltest, anderson, chi2_contingency, ttest_ind, ttest_rel, wilcoxon
+from scipy.stats import normaltest, anderson, chi2_contingency, ttest_ind, ttest_rel, wilcoxon, kruskal
 import random
 
 dat = [random.randrange(1,1000,1) for i in range(100)]
@@ -25,3 +25,6 @@ stat, p = ttest_rel(dat, dat2)
 
 # Wilcoxon signed-rank test
 stat, p = wilcoxon(dat, dat2)
+
+# Kruskal-Wallis test
+stat, p = kruskal(data1, data2)
