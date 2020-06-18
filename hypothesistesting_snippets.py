@@ -1,4 +1,4 @@
-from scipy.stats import normaltest, anderson, chi2_contingency, ttest_ind, ttest_rel, wilcoxon, kruskal
+from scipy.stats import normaltest, anderson, spearmanr, chi2_contingency, ttest_ind, ttest_rel, wilcoxon, kruskal
 import random
 
 dat = [random.randrange(1,1000,1) for i in range(100)]
@@ -12,6 +12,9 @@ print('stat=%.3f, p=%.3f' % (stat, p))
 # Anderson-Darling test for normality
 result = anderson(dat)
 print('stat=%.3f' % (result.statistic))
+
+# Spearman's Rank Correlation
+stat, p = spearmanr(dat, dat2)
 
 # Chi-Squared test
 table = [[10, 20, 30],[6,  9,  17]]
