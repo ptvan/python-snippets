@@ -1,4 +1,6 @@
-from scipy.stats import normaltest, anderson, spearmanr, chi2_contingency, ttest_ind, ttest_rel, wilcoxon, kruskal, adfuller
+from scipy.stats import normaltest, anderson, spearmanr, chi2_contingency, ttest_ind, ttest_rel, wilcoxon, kruskal
+
+from statsmodels.tsa.stattools import adfuller
 import random
 
 dat = [random.randrange(1,1000,1) for i in range(100)]
