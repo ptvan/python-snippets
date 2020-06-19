@@ -1,4 +1,4 @@
-from scipy.stats import normaltest, anderson, spearmanr, chi2_contingency, ttest_ind, ttest_rel, wilcoxon, kruskal
+from scipy.stats import normaltest, anderson, spearmanr, chi2_contingency, ttest_ind, ttest_rel, wilcoxon, kruskal, adfuller
 import random
 
 dat = [random.randrange(1,1000,1) for i in range(100)]
@@ -31,3 +31,6 @@ stat, p = wilcoxon(dat, dat2)
 
 # Kruskal-Wallis test
 stat, p = kruskal(dat, dat2)
+
+# Dickey-Fuller Unit Root test for time series autoregressiveness
+stat, p, lags, obs, crit, t = adfuller(dat)
