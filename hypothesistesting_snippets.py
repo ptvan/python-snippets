@@ -1,10 +1,11 @@
-from scipy.stats import normaltest, anderson, spearmanr, chi2_contingency, ttest_ind, ttest_rel, wilcoxon, kruskal
+from scipy.stats import normaltest, anderson, spearmanr, chi2_contingency, ttest_ind, ttest_rel, wilcoxon, kruskal, f_oneway
 
 from statsmodels.tsa.stattools import adfuller
 import random
 
 dat = [random.randrange(1,1000,1) for i in range(100)]
 dat2 = [random.randrange(1,1000,1) for i in range(100)]
+dat3 = [random.randrange(1,1000,1) for i in range(100)]
 
 
 # D'Agostino's test for normality
@@ -30,6 +31,9 @@ stat, p = ttest_rel(dat, dat2)
 
 # Wilcoxon signed-rank test
 stat, p = wilcoxon(dat, dat2)
+
+# ANOVA
+stat, p = f_oneway(dat, dat2, dat3)
 
 # Kruskal-Wallis test
 stat, p = kruskal(dat, dat2)
