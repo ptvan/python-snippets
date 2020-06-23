@@ -16,6 +16,6 @@ print(princomp.explained_variance_ratio_)
 multidim = MDS(n_components=2).fit_transform(dat)
 
 # Feature agglomeration
-agglo = cluster.FeatureAgglomeration(n_clusters=32)
-agglo.fit(x)
+agglo = cluster.FeatureAgglomeration(n_clusters=3)
+agglo.fit(dat)
 dat_reduced = agglo.transform(dat)
