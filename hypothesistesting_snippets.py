@@ -1,4 +1,4 @@
-from scipy.stats import normaltest, anderson, spearmanr, chi2_contingency, ttest_ind, ttest_rel, wilcoxon, kruskal, f_oneway
+from scipy.stats import normaltest, anderson, spearmanr, chi2_contingency, ttest_ind, ttest_rel, wilcoxon, kruskal, f_oneway, kendalltau
 
 from statsmodels.tsa.stattools import adfuller
 import random
@@ -18,6 +18,9 @@ print('stat=%.3f' % (result.statistic))
 
 # Spearman's Rank Correlation
 stat, p = spearmanr(dat, dat2)
+
+# Kendall's Tau Correlation
+stat, p = kendalltau(dat, dat2)
 
 # Chi-Squared test
 table = [[10, 20, 30],[6,  9,  17]]
