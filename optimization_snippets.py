@@ -3,15 +3,15 @@ import numpy.random as rn
 import matplotlib.pyplot as plt  
 import matplotlib as mpl
 
-from scipy import optimize      
+from scipy.optimize import dual_annealing
 
 import seaborn as sns
 
 ######################### 
 # SIMULATED ANNEALING
-# adapted from https://naereen.github.io/notebooks/
 #########################
 
+# adapted from https://naereen.github.io/notebooks/
 def annealing(random_start, cost_function, random_neighbor, acceptance, temperature, maxsteps=1000, debug=True):
     state = random_start()
     cost = cost_function(state)
@@ -60,3 +60,6 @@ def temperature(fraction):
 interval = (-10, 10)
 
 state, cost, states, costs = annealing(random_start, cost_function, random_neighbor, acceptance_probability, temperature, maxsteps=30, debug=True)
+
+### using scipy
+res = dual_annealing(f, bounds=list(zip(-10, 10)), seed=1234)
