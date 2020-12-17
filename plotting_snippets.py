@@ -28,7 +28,6 @@ activity.rename(columns={"creationDate" : "date"})
 activity.head()
 
 ## Matplotlib
-%matplotlib inline
 
 # barplot with 2 X-axes
 t = np.arange(activity.shape[0])
