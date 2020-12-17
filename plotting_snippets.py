@@ -24,5 +24,6 @@ activity.rename(columns={"creationDate" : "date"})
 activity.head()
 sns.distplot(activity['stepsWalked'])
 
+## Seaborn
 sns.scatterplot(x="stepsWalked", y="milesCycled", data=activity)
 
