@@ -4,9 +4,9 @@ import numpy as np
 from matplotlib_venn import venn2, venn2_circles, venn2_unweighted
 from matplotlib_venn import venn3, venn3_circles
 from matplotlib import pyplot as plt
+from sklearn.datasets import load_iris
 
-## read in data
-
+## read in personal health data
 steps = pd.read_csv("~/working/datasets/iphone_health/stepsData.csv")
 list(steps)
 steps.shape
@@ -26,6 +26,9 @@ cycling = cycling.groupby('creationDate', as_index=False).sum()
 activity = steps.merge(cycling, 'outer', left_on='creationDate', right_on='creationDate').fillna(0)
 activity.rename(columns={"creationDate" : "date"})
 activity.head()
+
+## read in iris
+iris = load_iris().data
 
 ## Matplotlib
 
@@ -65,3 +68,4 @@ sns.scatterplot(x="stepsWalked", y="milesCycled", data=activity)
 
 # histogram
 sns.distplot(activity['stepsWalked'])
+
