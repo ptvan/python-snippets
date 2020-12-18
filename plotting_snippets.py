@@ -31,7 +31,6 @@ activity.head()
 iris = load_iris().data
 
 ## Matplotlib
-
 # barplot with 2 X-axes
 t = np.arange(activity.shape[0])
 fig, ax1 = plt.subplots()
@@ -60,9 +59,7 @@ ax.set_ylabel('kcalBurned', color="black")
 venn2(subsets = (30, 10, 5), set_labels = ('Group A', 'Group B'))
 
 
-
 ## Seaborn 
-
 # scatterplot
 sns.scatterplot(x="stepsWalked", y="milesCycled", data=activity)
 
