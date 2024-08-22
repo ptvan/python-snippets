@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Tensorflow logs
+.tf_logs/
+
 # C extensions
 *.so
 
