@@ -16,20 +16,20 @@ from sklearn import mixture
 from sklearn.datasets import make_classification
 from sklearn.ensemble import AdaBoostClassifier
 
-
+## import and clean data
 steps = pd.read_csv("~/working/datasets/iphone_health/stepsData.csv")
 steps = steps.drop(['startDate','endDate'], axis=1)
 steps['creationDate'] = steps['creationDate'].str.slice(0,10)
 steps = steps.groupby('creationDate', as_index=False).sum()
 
-# Kernel Density Estimation 1D Gaussian
+## Kernel Density Estimation 1D Gaussian
 stepsraw = steps['stepsWalked'].to_numpy().reshape(-1,1)
 X_plot = np.linspace(-5, 10,1000)[:, np.newaxis]
 kde = KernelDensity(kernel='gaussian', bandwidth=0.5).fit(stepsraw)
 log_dens = kde.score_samples(X_plot)
-sns.distplot(np.exp(log_dens))
+sns.histplot(np.exp(log_dens))
 
-# Random Forest
+## Random Forest
 X, y = sklearn.datasets.load_boston(return_X_y=True)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 regressor = RandomForestRegressor(n_estimators=20, random_state=0)
@@ -41,13 +41,13 @@ print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_p
 
 regressor = regressor.estimators_[1]
 # output Graphviz .dot file, which needs 
-# `dot -Tpng tree.dot -o tree.png '-Gdpi=100'`
+# `dot -Tpng tree.dot -o tree.png '-Gdpi=100'` to convert to PNG
 export_graphviz(regressor, out_file='tree.dot', 
                 rounded = True, proportion = False, 
                 precision = 2, filled = True)
 
 
-# AdaBoost
+## AdaBoost
 X, y = make_classification(n_samples=1000, n_features=4,
                            n_informative=2, n_redundant=0,
                           random_state=0, shuffle=False)
@@ -57,7 +57,7 @@ ada.predict([[0, 0, 0, 0]])
 # mean accuracy
 ada.score(X, y)
 
-# Gaussian Mixture Model
+## Gaussian Mixture Model
 # NOTE: the data is rather crappy, so errors are expected below.
 
 steps = pd.read_csv("~/working/datasets/iphone_health/stepsData.csv")
@@ -105,7 +105,7 @@ for i, (mean, cov, color) in enumerate(zip(clf.means_, clf.covariances_,
     angle = np.arctan2(w[0][1], w[0][0])
     angle = 180. * angle / np.pi  # convert to degrees
     v = 2. * np.sqrt(2.) * np.sqrt(v)
-    ell = mpl.patches.Ellipse(mean, v[0], v[1], 180. + angle, color=color)
+    ell = plt.patches.Ellipse(mean, v[0], v[1], 180. + angle, color=color)
     ell.set_clip_box(splot.bbox)
     ell.set_alpha(.5)
     splot.add_artist(ell)

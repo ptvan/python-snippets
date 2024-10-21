@@ -18,7 +18,7 @@ my_protein = my_rna.translate()
 my_protein.complement()
 
 # reading in a GFF file
-# file is from wget ftp://ftp.ensembl.org/pub/release-98/gff3/homo_sapiens/Homo_sapiens.GRCh38.98.gff3.gz
+# file is from `wget ftp://ftp.ensembl.org/pub/release-98/gff3/homo_sapiens/Homo_sapiens.GRCh38.98.gff3.gz`
 col_names = ['seqid', 'source', 'type', 'start', 'end', 'score', 'strand', 'phase', 'attributes']
 df = pd.read_csv('Homo_sapiens.GRCh38.98.gff3.gz', compression='gzip',
                          sep='\t', comment='#', low_memory=False,
