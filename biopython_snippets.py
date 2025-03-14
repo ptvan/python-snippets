@@ -1,13 +1,11 @@
 ### using bioPython
 
 from Bio.Seq import Seq
-from Bio.Alphabet import generic_dna, generic_protein
 import pandas as pd
 import re
 
-
 # handling sequences
-my_dna = Seq("AGTACACTGGTC", generic_dna)
+my_dna = Seq("AGTACACTGGTC")
 my_dna.complement()
 my_rna = my_dna.transcribe()
 
