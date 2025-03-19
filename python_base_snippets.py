@@ -168,18 +168,18 @@ new_numbers = list(map(multiply_and_add, unsorted_numbers))
 new_numbers = list(map(lambda x : x*2 + 1, unsorted_numbers))
 
 
-########
+################
 # DATES & TIMES
-########
+################
 from datetime import datetime
 startstring = '2011-12-01'
 startdate = datetime.strptime(startstring, '%Y-%m-%d')
 duration = datetime.now() - startdate
 
 
-##########
+############
 # FILE I/O
-##########
+############
 import os
 dirnames = [name for name in os.listdir('/Users/ptv/') if os.path.isdir(os.path.join('/Users/ptv', name))]
 
@@ -192,9 +192,9 @@ with gzip.open("otherfile.gz", 'wt', compresslevel=5) as f:
 with gzip.open("filethatalreadyexists.gz", 'xb', compresslevel=5) as f:
     f.write(text)
 
-########
+#########
 # BASE64
-########
+#########
 # base64 is meant for byte data
 import base64
 mybytes = b'notastring'
@@ -213,3 +213,12 @@ random.choice(fruits)
 numbers = [1, 2, 3, 4, 5, 6, 7]
 random.shuffle(numbers)
 num1, num2, num3 = random.sample(numbers, 3)
+
+######################
+# DYNAMIC PROGRAMMING
+######################
+
+def fib(n):
+    if n <= 1:
+        return n
+    return fib(n - 1) + fib(n - 2)
