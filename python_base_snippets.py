@@ -1,7 +1,6 @@
-
-#################
+###################
 # DATA STRUCTURES
-#################
+###################
 # sets DO NOT ALLOW DUPLICATES, items cannot be changed, but can be added
 first_set = {1, "two", 3.0, 4}
 second_set = {1.0, "two", "three", 4.0}
@@ -87,9 +86,9 @@ hits = re.search("which", mystring)
 print(hits.span())
 
 
-#########
+###########
 # NUMBERS
-#########
+###########
 import decimal
 decimal.Decimal('2.5') + decimal.Decimal('2.6')
 round(47584, -1)
@@ -116,6 +115,7 @@ print(a)
 c = a + b
 c.numerator
 float(c)
+
 
 ########
 # LOOPS
@@ -157,7 +157,6 @@ for z in USstates.keys():
 #############
 # FUNCTIONS
 #############
-
 # map() returns a map object in Python3, so list() is necessary
 unsorted_numbers = [45, 1, -8, 7, 3.1415, 0, 15561]
 def multiply_and_add(x):
@@ -192,13 +191,15 @@ with gzip.open("otherfile.gz", 'wt', compresslevel=5) as f:
 with gzip.open("filethatalreadyexists.gz", 'xb', compresslevel=5) as f:
     f.write(text)
 
-#########
+
+##########
 # BASE64
-#########
+##########
 # base64 is meant for byte data
 import base64
 mybytes = b'notastring'
 base64.b64encode(mybytes)
+
 
 #########
 # RANDOM
@@ -214,10 +215,10 @@ numbers = [1, 2, 3, 4, 5, 6, 7]
 random.shuffle(numbers)
 num1, num2, num3 = random.sample(numbers, 3)
 
+
 ######################
 # DYNAMIC PROGRAMMING
 ######################
-
 def fib(n):
     if n <= 1:
         return n
